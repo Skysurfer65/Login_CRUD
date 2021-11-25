@@ -1,0 +1,173 @@
+/**
+************************************** 
+* Login program with JSON Database
+* Richard Fehling, MVT21 EC Utbildning
+************************************** 
+*/
+//Array for users
+let users = [];
+//Admin user ID to be updated
+let adminID = "";
+//Boolean for create account
+let accountCreation = false;
+
+//Buttons
+//Variable for button createOrLogin
+let createOrLogin = document.getElementById("createOrLogin");
+//createOrLogin.onclick = createAccount;
+//Variable for reset button
+let reset = document.getElementById("reset");
+//reset.onclick = resetSuccess;
+//Variable for button header
+let header = document.getElementById("header");
+//Variable for actionbutton
+let actionButton = document.getElementById("actionButton");
+
+//Outputs text
+let output1 = document.getElementById("output1");
+let output2 = document.getElementById("output2");
+
+//Button functions
+createOrLogin.onclick = createAccount;
+reset.onclick = resetSuccess;
+
+//Put prerequsites info on page
+resetSuccess();
+//Check if database is available
+setUpDB();
+//Setup admin user ID
+setUpAdmin();    
+
+//Functions
+function setUpDB(){
+    if (localStorage.getItem("myLoginDB") !== null) {
+        let textDB = localStorage.getItem("myLoginDB");
+        users = JSON.parse(textDB);
+        }
+}
+
+function setUpAdmin(){
+    if (localStorage.getItem("newAdminID") === null) {
+        adminID = "admin";
+        } else {
+            adminID = localStorage.getItem("newAdminID");
+        }
+}
+
+function Login(form) {
+    //Make object of User        
+    let user = new User(form.userID.value.trim(), form.password.value.trim());
+
+    if (accountCreation){
+        if (!user.checkUserInDB() && user.validateUserID() && user.validatePassword()){
+            //Add to user ArrayList
+            user.addUserToUsers();
+            output1.innerHTML = "Login credentials<br>succesfully created!";
+        } else alert(errors(1));
+
+    } else {
+        if (user.checkUserInDB()){
+            //Check password
+            if (user.checkPassword()){
+                //If you're admin
+                if (user.userID === adminID){
+                    pageRedirect();
+                }
+                output1.innerHTML = "CORRECT<br>You're logged in";
+                output2.innerHTML = "Reset to remove this message";
+            } 
+        } else alert(errors(2));                
+    }
+}
+
+function createAccount(){
+    accountCreation = true;
+    //Change GUI
+    header.innerHTML = "Create Account";
+    actionButton.value = "CREATE";
+    createOrLogin.value = "Go To Login";
+    createOrLogin.onclick = goToLogin;
+}
+
+function goToLogin(){
+    accountCreation = false;
+    //Change GUI
+    resetSuccess();
+    header.innerHTML = "Login";
+    actionButton.value = "Login";
+    createOrLogin.value = "Create Account";
+    createOrLogin.onclick = createAccount;
+}
+
+function resetSuccess(){
+    output1.innerHTML = "";
+    output2.innerHTML = errors(5);
+}
+
+function pageRedirect() {
+    window.location.replace("admin.html");
+}
+
+function returnTestStr(){
+    return "TESTING";
+}  
+
+function errors(x){
+    let text = "";
+    switch (x){
+        case 1:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text+= "                                  ERROR                             \n";
+            text+= " Prerequisites:                                                     \n";
+            text+= " User ID has to be unique and consist of minimum 4 characters, max 30.\n";
+            text+= " Only letters  and numbers and at least one of each, user ID is not \n";
+            text+= " case sensitive, no empty spaces are allowed.                       \n";
+            text+= "                                                                    \n";
+            text+= " Password has to have a minimum of 4 characters and consist of at   \n";
+            text+= " least one letter, one number and one special character. Passwords  \n";
+            text+= " are case sensitive and need to consist of both upper and lower     \n";
+            text+= " case letters. Maximum 16 characters.                               \n";
+            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";   
+            break;
+        case 2:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text+= "                                 ERROR                              \n";
+            text+= " User ID not in database, check your typing or                      \n";
+            text+= " create new account.                                                \n";
+            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"; 
+            break;
+        case 3:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text+= "                                 ERROR                              \n";
+            text+= " Password not in database, check your typing, you have              \n";
+            text+= " three attempts.                                                    \n";
+            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            break;
+        case 4:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text+= "                                WARNING                             \n";
+            text+= " You have tried to reach this userID three times with invalid       \n";
+            text+= " password, this user vill be deleted. You may create new user.      \n";
+            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"; 
+            break;
+        case 5:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>";     
+            text+= " Prerequisites:                                                     <br>";
+            text+= " User ID has to be unique and consist of minimum 4 characters, max 30.<br>";
+            text+= " Only letters  and numbers and at least one of each, user ID is not <br>";
+            text+= " case sensitive, no empty spaces are allowed.                       <br>";
+            text+= "                                                                    <br>";
+            text+= " Password has to have a minimum of 4 characters and consist of at   <br>";
+            text+= " least one letter, one number and one special character. Passwords  <br>";
+            text+= " are case sensitive and need to consist of both upper and lower     <br>";
+            text+= " case letters. Maximum 16 characters.                               <br>";
+            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>"; 
+            break;
+    }
+    return text;
+}
+//Functions to be used with Selenium
+function getUsers(){
+    getUsersStr = JSON.stringify(users, null, 1);
+    return getUsersStr;
+}
