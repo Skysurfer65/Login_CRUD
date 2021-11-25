@@ -14,14 +14,22 @@ let accountCreation = false;
 //Buttons
 //Variable for button createOrLogin
 let createOrLogin = document.getElementById("createOrLogin");
-//createOrLogin.onclick = createAccount;
+
+//Reset text if mouseclick in field
+let clearTextID = document.getElementById("userID");
+let clearTextPass = document.getElementById("password");
+
 //Variable for reset button
 let reset = document.getElementById("reset");
-//reset.onclick = resetSuccess;
-//Variable for button header
-let header = document.getElementById("header");
+
 //Variable for actionbutton
 let actionButton = document.getElementById("actionButton");
+
+//Variable for header text
+let header = document.getElementById("header");
+
+//Variable for form
+let form = document.getElementById("login");
 
 //Outputs text
 let output1 = document.getElementById("output1");
@@ -30,6 +38,9 @@ let output2 = document.getElementById("output2");
 //Button functions
 createOrLogin.onclick = createAccount;
 reset.onclick = resetSuccess;
+clearTextID.onclick = resetSuccess;
+clearTextPass.onclick = resetSuccess;
+actionButton.onclick = login;
 
 //Put prerequsites info on page
 resetSuccess();
@@ -54,7 +65,7 @@ function setUpAdmin(){
         }
 }
 
-function Login(form) {
+function login() {
     //Make object of User        
     let user = new User(form.userID.value.trim(), form.password.value.trim());
 
@@ -107,7 +118,7 @@ function resetSuccess(){
 function pageRedirect() {
     window.location.replace("admin.html");
 }
-
+//for test
 function returnTestStr(){
     return "TESTING";
 }  
