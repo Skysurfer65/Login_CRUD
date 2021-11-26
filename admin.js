@@ -7,15 +7,24 @@
 //Database administation
 //Page variables
 let adminLocalDB = [];
+
+//DOM objects
+let dispDB = document.getElementById("displayDB");
 let logOut = document.getElementById("logout");
+let updEntry = document.getElementById("updateEntry");
+let delEntry = document.getElementById("deleteEntry");
+
 //For test
 let testOutput = document.getElementById("testOutput");
 
 //Retrieving data:
 retrievingData();
 
-//Logout
+//Button actions
+dispDB.onclick = displayDB;
 logOut.onclick = logout;
+updEntry.onclick = updateEntry;
+delEntry.onclick = deleteEntry;
 
 //Functions
 function retrievingData(){
@@ -93,7 +102,7 @@ function updateEntry(){
                 var newUserID = promptTxtInput(4); //"var" selected to reach outside block
                 //TODO använda class User metoder istället
                 valid = validateUserID(newUserID);
-                if (!valid) alert("NOT A VALID SELECTION!!!");       
+                if (!valid) alert("!!! NOT A VALID SELECTION !!!");       
             } while (!valid);
             //If admin changes his/her user ID
             if (adminLocalDB[n].userID === "admin" || adminLocalDB[n].userID === localStorage.getItem("newAdminID")){
@@ -111,17 +120,17 @@ function updateEntry(){
                 var newPassword = promptTxtInput(5); //"var" selected to reach outside block
                 //TODO använda class User metoder istället 
                 valid = validatePassword(newPassword);
-                if (!valid) alert("NOT A VALID SELECTION!!!");              
+                if (!valid) alert("!!! NOT A VALID SELECTION !!!");              
             } while (!valid);
             adminLocalDB[n].password = newPassword;
             saveToDB(adminLocalDB);           
         }
         else { 
-            alert("NOT A VALID SELECTION!!!")
+            alert("!!! NOT A VALID SELECTION !!!")
         }
         
     } else {
-        alert("NOT A VALID SELECTION!!!")
+        alert("!!! NOT A VALID SELECTION !!!")
     }
 
 }
@@ -138,7 +147,7 @@ function deleteEntry(){
         saveToDB(adminLocalDB);
         //TODO kolla ta bort newAdminID
     } else {
-        alert("NOT A VALID SELECTION!!!")
+        alert("!!! NOT A VALID SELECTION !!!")
     }
 }
 
