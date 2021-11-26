@@ -13,6 +13,7 @@ let dispDB = document.getElementById("displayDB");
 let logOut = document.getElementById("logout");
 let updEntry = document.getElementById("updateEntry");
 let delEntry = document.getElementById("deleteEntry");
+let helpAdminTxt = document.getElementById("helpAdmin");
 
 //For test
 let testOutput = document.getElementById("testOutput");
@@ -25,6 +26,7 @@ dispDB.onclick = displayDB;
 logOut.onclick = logout;
 updEntry.onclick = updateEntry;
 delEntry.onclick = deleteEntry;
+helpAdminTxt.onclick = helpAdmin;
 
 //Functions
 function retrievingData(){
@@ -71,6 +73,10 @@ function displayDB(){
         td4.appendChild(document.createTextNode(user.admin));        
         counter++ 
     });
+}
+
+function helpAdmin(){
+    alert(promptText(6));
 }
 
 function logout(){
@@ -241,6 +247,17 @@ function promptText(x){
             text+= " are case sensitive and need to consist of both upper and lower     \n";
             text+= " case letters. Maximum 16 characters.                               \n";
             text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";           
+            break;
+        case 6:
+            text = "                                           HOW-TO\n";
+            text+= " Admin as User ID can be changed with CRUD operations and is good\n";
+            text+= " practice. The new admin User ID will follow standard User ID criteria.\n";
+            text+= " Minimum 4 characters and max 30, atleast one letter and one number. \n";
+            text+= " After a CRUD operation is done click on \"Display Current Database\"\n";
+            text+= " to see changes. Database fields could be removed with browser update.\n";
+            text+= " Database is visual as JSON in browser dev tool as \"myLoginDB\" in \n";
+            text+= " Local storage. An updated admin User ID will be there as \"newAdminID\"\n";
+            text+= " Tests could be viewed in browser console.";  
             break;
     }
     return text;

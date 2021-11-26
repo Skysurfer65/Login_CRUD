@@ -12,6 +12,9 @@ let adminID = "";
 let accountCreation = false;
 
 //Buttons
+//Variable for help button
+let helpTxt = document.getElementById("help");
+
 //Variable for button createOrLogin
 let createOrLogin = document.getElementById("createOrLogin");
 
@@ -36,6 +39,7 @@ let output1 = document.getElementById("output1");
 let output2 = document.getElementById("output2");
 
 //Button functions
+helpTxt.onclick = help;
 createOrLogin.onclick = createAccount;
 reset.onclick = resetSuccess;
 clearTextID.onclick = resetSuccess;
@@ -110,6 +114,10 @@ function goToLogin(){
     createOrLogin.onclick = createAccount;
 }
 
+function help() {
+   alert(errors(6)); 
+}
+
 function resetSuccess(){
     output1.innerHTML = "";
     output2.innerHTML = errors(5);
@@ -163,7 +171,7 @@ function errors(x){
             break;
         case 5:
             text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>";     
-            text+= " Prerequisites:                                                     <br>";
+            text+= " <h3>Prerequisites:</h3><br>";
             text+= " User ID has to be unique and consist of minimum 4 characters, max 30.<br>";
             text+= " Only letters  and numbers and at least one of each, user ID is not <br>";
             text+= " case sensitive, no empty spaces are allowed.                       <br>";
@@ -173,6 +181,20 @@ function errors(x){
             text+= " are case sensitive and need to consist of both upper and lower     <br>";
             text+= " case letters. Maximum 16 characters.                               <br>";
             text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>"; 
+            break;
+        case 6:
+            text = "                                           HOW-TO\n";
+            text+= " !!! You cannot login without first creating an account !!!\n";
+            text+= " To create an account:\n";
+            text+= " Click on \"Create Account\" \n";
+            text+= " write User ID and Password according to prerequisites and click \"CREATE\"\n";
+            text+= " Click on \"Go To Login\" and test your login, create a bunch of logins!\n";
+            text+= "                                                                    \n";
+            text+= " Create an Admin account to be able to perform CRUD operations:     \n";
+            text+= " Create account with \"admin\" as User ID. Admin as User ID can be\n";
+            text+= " changed with CRUD operations after login as admin on \"Admin page\"\n";
+            text+= " Database is visual as JSON in browser dev tool as \"myLoginDB\" in \n";
+            text+= " Local storage.";  
             break;
     }
     return text;
