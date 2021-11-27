@@ -22,7 +22,7 @@ class User{
         //Check length of userID
         if (this.userID.length < 4 || this.userID.length > 30) return false;
         //No checks for admin will be checked when update in admin.js
-        if (this.userID === adminID){ 
+        if (this.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){ 
             this.admin = "YES";
             return true;
         } else this.admin = "NO";
@@ -64,7 +64,7 @@ class User{
     checkUserInDB(){
         for (let i = 0; i < users.length; i++){
             //UserID not case sensitive
-            if (users[i].userID.toLocaleUpperCase() === this.userID.toLocaleUpperCase()) return true;
+            if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()) return true;
         }
         return false;
     }

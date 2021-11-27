@@ -111,7 +111,8 @@ function updateEntry(){
                 if (!valid) alert("!!! NOT A VALID SELECTION !!!");       
             } while (!valid);
             //If admin changes his/her user ID
-            if (adminLocalDB[n].userID === "admin" || adminLocalDB[n].userID === localStorage.getItem("newAdminID")){
+            if (adminLocalDB[n].userID.toLocaleLowerCase() === "admin" ||
+            adminLocalDB[n].userID.toLocaleLowerCase() === localStorage.getItem("newAdminID").toLocaleLowerCase()){
                 //Set newAdminID in localstorage
                 localStorage.setItem("newAdminID", newUserID);
             }
@@ -175,7 +176,7 @@ function validateUserID(newUserID){
     //Check if userID already exists
     for (let i = 0; i < adminLocalDB.length; i++){
         //UserID not case sensitive
-        if (adminLocalDB[i].userID.toLocaleUpperCase() === newUserID.toLocaleUpperCase()) return false;
+        if (adminLocalDB[i].userID.toLocaleLowerCase() === newUserID.toLocaleLowerCase()) return false;
     }
     
     //Check for no empty space or special char, at least one letter and one number

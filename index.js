@@ -85,7 +85,7 @@ function login() {
             //Check password
             if (user.checkPassword()){
                 //If you're admin
-                if (user.userID === adminID){
+                if (user.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){
                     pageRedirect();
                 }
                 output1.innerHTML = "CORRECT<br>You're logged in";
