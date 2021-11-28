@@ -13,6 +13,7 @@ let dispDB = document.getElementById("displayDB");
 let logOut = document.getElementById("logout");
 let updEntry = document.getElementById("updateEntry");
 let delEntry = document.getElementById("deleteEntry");
+let delEverything = document.getElementById("deleteEverything");
 let helpAdminTxt = document.getElementById("helpAdmin");
 
 //For test
@@ -26,6 +27,7 @@ dispDB.onclick = displayDB;
 logOut.onclick = logout;
 updEntry.onclick = updateEntry;
 delEntry.onclick = deleteEntry;
+delEverything.onclick = deleteEverything;
 helpAdminTxt.onclick = helpAdmin;
 
 //Functions
@@ -156,6 +158,16 @@ function deleteEntry(){
     } else {
         alert("!!! NOT A VALID SELECTION !!!")
     }
+}
+
+function deleteEverything(){
+    //Confirmation
+    if (confirm("!!! Are you shure to delete the whole list !!!")) {
+        //Delete database
+        localStorage.removeItem("myLoginDB");
+        //Delete stored new admin User ID
+        localStorage.removeItem("newAdminID");
+      } //Else return to Admin page
 }
 
 function saveToDB(adminLocalDB){
