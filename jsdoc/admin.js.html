@@ -1,8 +1,36 @@
-/**
-* *************************************
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: admin.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: admin.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+**************************************
 * Login program with JSON Database
 * Richard Fehling, MVT21 EC Utbildning
-* *************************************
+**************************************
 */
 //Database administation
 //Page variables
@@ -57,7 +85,8 @@ function displayDB(){
     tr.appendChild(th4);
     th4.appendChild(document.createTextNode("** Admin **"));
 
-    //Make dynamic table of data     
+    //Make dynamic table of data
+    retrievingData();     
     adminLocalDB.forEach(user => {
         let tr = document.createElement('TR');
         myTable.appendChild(tr);
@@ -84,7 +113,11 @@ function helpAdmin(){
 function logout(){
     window.location.replace("index.html");
 }
-
+/**
+ * Parse input string to integer
+ * @param {string} text 
+ * @returns integer
+ */
 //Input integer
 function promptIntInput(text){
     let input = parseInt(prompt(promptText(text)));
@@ -101,7 +134,7 @@ function promptTxtInput(text){
 
 function updateEntry(){
     let n = promptIntInput(1);
-    if (n >= 0 && n < adminLocalDB.length){
+    if (n >= 0 &amp;&amp; n &lt; adminLocalDB.length){
         let inputTxt = promptTxtInput(3);
         let valid = false;
         //Update user ID, truncate input enough to write "user"
@@ -115,7 +148,7 @@ function updateEntry(){
             //If admin changes his/her user ID
             if (adminLocalDB[n].userID.toLocaleLowerCase() === "admin" ||
             adminLocalDB[n].userID.toLocaleLowerCase() === localStorage.getItem("newAdminID").toLocaleLowerCase()){
-                //Set newAdminID in localstorage
+                //Set newAdminID in local storage
                 localStorage.setItem("newAdminID", newUserID);
             }
             //Save to adminLocalDB
@@ -146,7 +179,7 @@ function updateEntry(){
 
 function deleteEntry(){
     let n = parseInt(prompt(promptText(2)));
-    if (n >= 0 && n < adminLocalDB.length){
+    if (n >= 0 &amp;&amp; n &lt; adminLocalDB.length){
         //If admin wants to delete his/her entry
         if (adminLocalDB[n].userID === "admin" || adminLocalDB[n].userID === localStorage.getItem("newAdminID")){
             //Delete newAdminID in localstorage
@@ -154,14 +187,12 @@ function deleteEntry(){
         }
         adminLocalDB.splice(n, 1);
         saveToDB(adminLocalDB);
-        //TODO kolla ta bort newAdminID
     } else {
         alert("!!! NOT A VALID SELECTION !!!")
     }
 }
 
 function deleteEverything(){
-    //Confirmation
     if (confirm("!!! Are you shure to delete the whole list !!!")) {
         //Delete database
         localStorage.removeItem("myLoginDB");
@@ -177,33 +208,32 @@ function saveToDB(adminLocalDB){
 
 function validateUserID(newUserID){
     let letter = false, number = false;
-    let specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}";
+    let specialCharacters = " !#$%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}";
     let numbers = "1234567890";
     
     //Check if userID empty
     if (newUserID == null) return false;
     if (newUserID.isEmpty) return false;
-    //Check length of userID
-    if (newUserID.length < 4 || newUserID.length > 30) return false;
+    //Check length
+    if (newUserID.length &lt; 4 || newUserID.length > 30) return false;
     //Check if userID already exists
-    for (let i = 0; i < adminLocalDB.length; i++){
+    for (let i = 0; i &lt; adminLocalDB.length; i++){
         //UserID not case sensitive
         if (adminLocalDB[i].userID.toLocaleLowerCase() === newUserID.toLocaleLowerCase()) return false;
     }
     
     //Check for no empty space or special char, at least one letter and one number
-    for (let i = 0; i < newUserID.length; i++) {
+    for (let i = 0; i &lt; newUserID.length; i++) {
         if (specialCharacters.indexOf(newUserID[i]) > -1) return false;
         else if (numbers.indexOf(newUserID[i]) > -1) number = true;
         else letter = true;         
     }
-    //returns true if only letters and numbers
-    return (letter && number);
+    return (letter &amp;&amp; number);
 }
 
 function validatePassword(newPassword){
     let specialChar = false, number = false, letter = false, upperCase = false;
-    let specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}";
+    let specialCharacters = "!#$%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}";
     let emptySpace = " ";
     let numbers = "1234567890";
     let capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
@@ -211,68 +241,41 @@ function validatePassword(newPassword){
     //Check if password is empty
     if (newPassword == null) return false;
     if (newPassword.isEmpty) return false;
-    //Check size, at least 4 characters and a maximum om 16 characters
-    if (newPassword.length < 4 || newPassword.length > 16) return false;
+    //Check length
+    if (newPassword.length &lt; 4 || newPassword.length > 16) return false;
     
     //Check for no empty space but at least one letter, one number and one special character
-    for (let i = 0; i < newPassword.length; i++) {
+    for (let i = 0; i &lt; newPassword.length; i++) {
         if (emptySpace.indexOf(newPassword[i]) > -1) return false;
         else if (specialCharacters.indexOf(newPassword[i]) > -1) specialChar = true;
         else if (numbers.indexOf(newPassword[i]) > -1) number = true;
         else if (capitalLetters.indexOf(newPassword[i]) > -1) upperCase = true;
         else letter = true;
     }  
-    //returns true if all the criteria is there
-    return (specialChar && number && upperCase && letter);
+    return (specialChar &amp;&amp; number &amp;&amp; upperCase &amp;&amp; letter);
 }
 
-function promptText(x){
-    let text = "";
-    switch (x){
-        case 1:
-            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-            text+= 'Which "Data ID" do you want to UPDATE?\n';
-            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-            break;
-        case 2:
-            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-            text+= 'Which "Data ID" do you want to DELETE?\n';
-            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";            
-            break;
-        case 3:
-            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-            text+= 'Which key field do you want to update, "User ID" \nor "Password"?\n';
-            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";            
-            break;
-        case 4:
-            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";     
-            text+= " Prerequisites:                                                     \n";
-            text+= " User ID has to be unique and consist of minimum 4 characters, max 30.\n";
-            text+= " Only letters  and numbers and at least one of each, user ID is not \n";
-            text+= " case sensitive, no empty spaces are allowed.                       \n";
-            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-            break;
-        case 5:
-            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-            text+= " Prerequisites:                                                     \n";     
-            text+= " Password has to have a minimum of 4 characters and consist of at   \n";
-            text+= " least one letter, one number and one special character. Passwords  \n";
-            text+= " are case sensitive and need to consist of both upper and lower     \n";
-            text+= " case letters. Maximum 16 characters.                               \n";
-            text+= "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";           
-            break;
-        case 6:
-            text = "                                           HOW-TO\n";
-            text+= " Admin as User ID can be changed with CRUD operations and is good\n";
-            text+= " practice. The new admin User ID will follow standard User ID criteria.\n";
-            text+= " Minimum 4 characters and max 30, atleast one letter and one number. \n";
-            text+= " After a CRUD operation is done click on \"Display Current Database\"\n";
-            text+= " to see changes. Database fields could be removed with browser update.\n";
-            text+= " Database is visual as JSON in browser dev tool as \"myLoginDB\" in \n";
-            text+= " Local storage. An updated admin User ID will be there as \"newAdminID\"\n";
-            text+= " Tests could be viewed in browser console.";  
-            break;
-    }
-    return text;
-}
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#promptIntInput">promptIntInput</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 13:55:04 GMT+0100 (centraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

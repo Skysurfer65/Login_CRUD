@@ -6,7 +6,7 @@ class User{
         this.userID = userID;
         this.password = password;
         this.admin = admin;
-        //Variable to check login attempts
+        //Variable to check login attempts/session. Value not stored in database
         this.nrOfAttempts = 0;          
         }
 
@@ -21,7 +21,7 @@ class User{
         if (this.userID.isEmpty) return false;
         //Check length of userID
         if (this.userID.length < 4 || this.userID.length > 30) return false;
-        //No checks for admin will be checked when update in admin.js
+        //No checks for admin. Will be checked later when updated in admin.js
         if (this.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){ 
             this.admin = "YES";
             return true;
@@ -32,7 +32,6 @@ class User{
             else if (numbers.indexOf(this.userID[i]) > -1) number = true;
             else letter = true;         
         }
-        //returns true if only letters and numbers
         return (letter && number);
     }
 
@@ -46,7 +45,7 @@ class User{
         //Check if password is empty
         if (this.password == null) return false;
         if (this.password.isEmpty) return false;
-        //Check size, at least 4 characters and a maximum om 16 characters
+        //Check length
         if (this.password.length < 4 || this.password.length > 16) return false;
         
         //Check for no empty space but at least one letter, one number and one special character
@@ -57,7 +56,6 @@ class User{
             else if (capitalLetters.indexOf(this.password[i]) > -1) upperCase = true;
             else letter = true;
         }  
-        //returns true if all the criteria is there
         return (specialChar && number && upperCase && letter);
     }
 
@@ -84,9 +82,8 @@ class User{
                         //Update database
                         let myLoginDB = JSON.stringify(users);
                         localStorage.setItem("myLoginDB", myLoginDB); 
-                        //Warning message
                         alert(errors(4));
-                    } else alert(errors(3)); //Error wrong password
+                    } else alert(errors(3));
                 }
             }
         }
