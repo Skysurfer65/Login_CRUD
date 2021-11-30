@@ -1,6 +1,6 @@
 # jsdoc folder
 This folder is for jsdoc generated comments from within my javascript
-files. The html files will open in your local webserver. You will offcourse
+files. The html files will open in your local webserver. You will of course
 need to have jsdoc installed on your computer.
 To generate docs you can use terminal command:<br/>
 jsdoc **filename** --destination **path**<br/>
