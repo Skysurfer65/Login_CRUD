@@ -115,9 +115,9 @@ function pageRedirect() {
     window.location.replace("admin.html");
 }
 //for test
-function returnTestStr(){
-    return "TESTING";
-}  
+// function returnTestStr(){
+//     return "TESTING";
+// }  
 
 //Functions to be used with Selenium
 function getUsers(){
