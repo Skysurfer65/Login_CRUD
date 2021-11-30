@@ -1,11 +1,11 @@
 # jsdoc folder
 This folder is for jsdoc generated comments from within my javascript
 files. The html files will open in your local webserver.
-To generate docs you can use terminal command:
-jsdoc <filename> --destination <path>
-Example, with my folder structure if the command prompt is in "js" folder:
+To generate docs you can use terminal command:<br/>
+jsdoc **filename** --destination **path**
+Example, with my folder structure if the command prompt is in "js" folder:<br/>
 jsdoc index.js --destination ../../jsdoc
 
 # Author
-Richard Fehling, student at EC Utbildning, MVT21
+Richard Fehling, student at EC Utbildning, MVT21<br/>
 richard.fehling@learnet.se

@@ -11,5 +11,5 @@ of your own via update entry.
 A help file is available via "help" button.
 
 # Author
-Richard Fehling, student at EC Utbildning, MVT21
+Richard Fehling, student at EC Utbildning, MVT21<br/>
 richard.fehling@learnet.se
