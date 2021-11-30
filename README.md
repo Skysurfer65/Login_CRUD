@@ -30,5 +30,5 @@ and testing purposes. It has been designed for Microsoft Edge but should work
 fine in other browsers aswell.
 
 # Author
-Richard Fehling, student at EC Utbildning, MVT21br/
+Richard Fehling, student at EC Utbildning, MVT21<br/>
 richard.fehling@learnet.se
