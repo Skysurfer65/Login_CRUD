@@ -1,8 +1,9 @@
 /**
-**************************************
+**********************************************
 * Login program with JSON Database
-* Richard Fehling, MVT21 EC Utbildning
-**************************************
+* @author Richard Fehling, MVT21 EC Utbildning
+* @file store DB in Local storage
+**********************************************
 */
 //Database administation
 //Page variables
@@ -19,7 +20,7 @@ let helpAdminTxt = document.getElementById("helpAdmin");
 //For test
 let testOutput = document.getElementById("testOutput");
 
-//Retrieving data:
+//Get data from database
 retrievingData();
 
 //Button actions
@@ -31,11 +32,19 @@ delEverything.onclick = deleteEverything;
 helpAdminTxt.onclick = helpAdmin;
 
 //Functions
+/**
+ * @function get database from Local storage
+ * store locally in "adminLocalDB"
+ */
 function retrievingData(){
     let textDB = localStorage.getItem("myLoginDB");
     adminLocalDB = JSON.parse(textDB);
 }
 
+/**
+ * @function create dynamic table for
+ * display of database
+ */
 function displayDB(){
     //Variables
     let counter = 0;
@@ -78,26 +87,36 @@ function displayDB(){
     });
 }
 
+/**
+ * @function diplay alert with helptext
+ */
 function helpAdmin(){
     alert(promptText(6));
 }
 
+/**
+ * @function redirect to index when logout
+ */
 function logout(){
     window.location.replace("index.html");
 }
+
 /**
  * Parse input string to integer
- * @param {string} text 
- * @returns integer
  * @description take prompt text as param
+ * @param {string} text - from promptText.js
+ * @returns integer 
  */
-//Input integer
 function promptIntInput(text){
     let input = parseInt(prompt(promptText(text)));
     return input;
 }
 
-//Input text
+/**
+ * @description take prompt text as param
+ * @param {string} text - from promptText.js
+ * @returns string 
+ */
 function promptTxtInput(text){
     let input = prompt(promptText(text));
     //Regex to remove spaces
@@ -105,6 +124,11 @@ function promptTxtInput(text){
     return input;    
 }
 
+/**
+ * @function updates either User ID or Password.
+ * Update default admin User ID to new ID according
+ * to prerequisites
+ */
 function updateEntry(){
     let n = promptIntInput(1);
     if (n >= 0 && n < adminLocalDB.length){
@@ -150,6 +174,11 @@ function updateEntry(){
 
 }
 
+/**
+ * @function delete row in database identified by Data ID
+ * If admin deletes own entry and admin User ID has been
+ * changed it will also delete "newAdminID" in Local storage
+ */
 function deleteEntry(){
     let n = parseInt(prompt(promptText(2)));
     if (n >= 0 && n < adminLocalDB.length){
@@ -165,6 +194,9 @@ function deleteEntry(){
     }
 }
 
+/**
+ * @function delete all stored data in Local storage
+ */
 function deleteEverything(){
     if (confirm("!!! Are you shure to delete the whole list !!!")) {
         //Delete database
@@ -174,11 +206,20 @@ function deleteEverything(){
       } //Else return to Admin page
 }
 
+/**
+ * @function post to database
+ * @param {array} adminLocalDB - Objects of User
+ */
 function saveToDB(adminLocalDB){
     let myLoginDB = JSON.stringify(adminLocalDB);
     localStorage.setItem("myLoginDB", myLoginDB);
 }
 
+/**
+ * @description Check updated User ID according to prerequisites
+ * @param {string} newUserID - spaces removed
+ * @returns true || false
+ */
 function validateUserID(newUserID){
     let letter = false, number = false;
     let specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}";
@@ -204,6 +245,11 @@ function validateUserID(newUserID){
     return (letter && number);
 }
 
+/**
+ * @description Check updated Password according to prerequisites
+ * @param {string} newPassword - spaces removed
+ * @returns true || false
+ */
 function validatePassword(newPassword){
     let specialChar = false, number = false, letter = false, upperCase = false;
     let specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}";

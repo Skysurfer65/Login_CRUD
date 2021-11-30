@@ -1,4 +1,9 @@
-
+/**
+************************************** 
+* Login program with JSON Database
+* Richard Fehling, MVT21 EC Utbildning
+************************************** 
+*/
 //User class
 class User{
     //Constructor   

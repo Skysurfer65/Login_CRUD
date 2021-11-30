@@ -1,3 +1,9 @@
+/**
+************************************** 
+* Login program with JSON Database
+* Richard Fehling, MVT21 EC Utbildning
+************************************** 
+*/
 function errors(x) {
     let text = "";
     switch (x) {
