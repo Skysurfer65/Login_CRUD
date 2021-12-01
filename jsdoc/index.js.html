@@ -71,7 +71,8 @@ setUpDB();
 setUpAdmin();    
 
 /**
- * @function fetch existing database
+ * @function  setUpDB
+ * Check if DB available and load into users[]
  */
 //Functions
 function setUpDB(){
@@ -82,7 +83,8 @@ function setUpDB(){
 }
 
 /**
- * @function fetch existing admin User ID
+ * @function setUpAdmin
+ * Check if admin User ID has been changed and load into adminID
  */
 function setUpAdmin(){
     if (localStorage.getItem("newAdminID") === null) {
@@ -93,7 +95,9 @@ function setUpAdmin(){
 }
 
 /**
- * @function main function login or create user
+ * @function Login
+ * Main function for login or create account
+ * Reads object of User class
  */
 function login() {
     //Make object of User        
@@ -122,7 +126,8 @@ function login() {
 }
 
 /**
- * @function GUI setup for create account
+ * @function createAccount
+ * GUI setup for creating account
  */
 function createAccount(){
     accountCreation = true;
@@ -134,7 +139,8 @@ function createAccount(){
 }
 
 /**
- * @function GUI setup for login
+ * @function goToLogin
+ * GUI setup for login
  */
 function goToLogin(){
     accountCreation = false;
@@ -147,14 +153,16 @@ function goToLogin(){
 }
 
 /**
- * @function display help text file
+ * @function help
+ * Display help file
  */
 function help() {
    alert(errors(6)); 
 }
 
 /**
- * @function reset GUI
+ * @function resetSuccess
+ * Cleans up GUI after creation or login
  */
 function resetSuccess(){
     output1.innerHTML = "";
@@ -162,14 +170,16 @@ function resetSuccess(){
 }
 
 /**
- * @function redirect admin after login
+ * @function pageRedirect
+ * Redirect admin after login
  */
 function pageRedirect() {
     window.location.replace("admin.html");
 }
 
 /**
- * @function experimental func. to be used by Selenium
+ * @function getUsers
+ * Experimental function for Selenium
  * @returns string presentation of objects in users
  */
 function getUsers(){
@@ -185,13 +195,13 @@ function getUsers(){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#displayhelptextfile">display help text file</a></li><li><a href="global.html#fetchexistingadminUserID">fetch existing admin User ID</a></li><li><a href="global.html#fetchexistingdatabase">fetch existing database</a></li><li><a href="global.html#GUIsetupforcreateaccount">GUI setup for create account</a></li><li><a href="global.html#GUIsetupforlogin">GUI setup for login</a></li><li><a href="global.html#mainfunctionloginorcreateuser">main function login or create user</a></li><li><a href="global.html#redirectadminafterlogin">redirect admin after login</a></li><li><a href="global.html#resetGUI">reset GUI</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createdynamictablefordisplayofdatabase">create dynamic table fordisplay of database</a></li><li><a href="global.html#createAccountGUIsetupforcreatingaccount">createAccountGUI setup for creating account</a></li><li><a href="global.html#deleteallstoreddatainLocalstorage">delete all stored data in Local storage</a></li><li><a href="global.html#deleterowindatabaseidentifiedbyDataIDIfadmindeletesownentryandadminUserIDhasbeenchangeditwillalsodelete%2522newAdminID%2522inLocalstorage">delete row in database identified by Data IDIf admin deletes own entry and admin User ID has beenchanged it will also delete "newAdminID" in Local storage</a></li><li><a href="global.html#diplayalertwithhelptext">diplay alert with helptext</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getdatabasefromLocalstoragestorelocallyin%2522adminLocalDB%2522">get database from Local storagestore locally in "adminLocalDB"</a></li><li><a href="global.html#getUsersExperimentalfunctionforSelenium">getUsersExperimental function for Selenium</a></li><li><a href="global.html#goToLoginGUIsetupforlogin">goToLoginGUI setup for login</a></li><li><a href="global.html#helpDisplayhelpfile">helpDisplay help file</a></li><li><a href="global.html#LoginMainfunctionforloginorcreateaccountReadsobjectofUserclass">LoginMain function for login or create accountReads object of User class</a></li><li><a href="global.html#pageRedirectRedirectadminafterlogin">pageRedirectRedirect admin after login</a></li><li><a href="global.html#posttodatabase">post to database</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#redirecttoindexwhenlogout">redirect to index when logout</a></li><li><a href="global.html#resetSuccessCleansupGUIaftercreationorlogin">resetSuccessCleans up GUI after creation or login</a></li><li><a href="global.html#setUpAdminCheckifadminUserIDhasbeenchangedandloadintoadminID">setUpAdminCheck if admin User ID has been changed and load into adminID</a></li><li><a href="global.html#setUpDBCheckifDBavailableandloadintousers%255B%255D">setUpDBCheck if DB available and load into users[]</a></li><li><a href="global.html#updateseitherUserIDorPassword.UpdatedefaultadminUserIDtonewIDaccordingtoprerequisites">updates either User ID or Password.Update default admin User ID to new ID accordingto prerequisites</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 21:43:25 GMT+0100 (centraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 09:56:10 GMT+0100 (centraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>

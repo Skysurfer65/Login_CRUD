@@ -43,7 +43,8 @@ setUpDB();
 setUpAdmin();    
 
 /**
- * @function fetch existing database
+ * @function  setUpDB
+ * Check if DB available and load into users[]
  */
 //Functions
 function setUpDB(){
@@ -54,7 +55,8 @@ function setUpDB(){
 }
 
 /**
- * @function fetch existing admin User ID
+ * @function setUpAdmin
+ * Check if admin User ID has been changed and load into adminID
  */
 function setUpAdmin(){
     if (localStorage.getItem("newAdminID") === null) {
@@ -65,7 +67,9 @@ function setUpAdmin(){
 }
 
 /**
- * @function main function login or create user
+ * @function Login
+ * Main function for login or create account
+ * Reads object of User class
  */
 function login() {
     //Make object of User        
@@ -94,7 +98,8 @@ function login() {
 }
 
 /**
- * @function GUI setup for create account
+ * @function createAccount
+ * GUI setup for creating account
  */
 function createAccount(){
     accountCreation = true;
@@ -106,7 +111,8 @@ function createAccount(){
 }
 
 /**
- * @function GUI setup for login
+ * @function goToLogin
+ * GUI setup for login
  */
 function goToLogin(){
     accountCreation = false;
@@ -119,14 +125,16 @@ function goToLogin(){
 }
 
 /**
- * @function display help text file
+ * @function help
+ * Display help file
  */
 function help() {
    alert(errors(6)); 
 }
 
 /**
- * @function reset GUI
+ * @function resetSuccess
+ * Cleans up GUI after creation or login
  */
 function resetSuccess(){
     output1.innerHTML = "";
@@ -134,14 +142,16 @@ function resetSuccess(){
 }
 
 /**
- * @function redirect admin after login
+ * @function pageRedirect
+ * Redirect admin after login
  */
 function pageRedirect() {
     window.location.replace("admin.html");
 }
 
 /**
- * @function experimental func. to be used by Selenium
+ * @function getUsers
+ * Experimental function for Selenium
  * @returns string presentation of objects in users
  */
 function getUsers(){

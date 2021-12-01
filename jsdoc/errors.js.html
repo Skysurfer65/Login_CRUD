@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: errors.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: errors.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+************************************** 
+* Login program with JSON Database
+* Richard Fehling, MVT21 EC Utbildning
+************************************** 
+*/
+function errors(x) {
+    let text = "";
+    switch (x) {
+        case 1:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text += "                                  ERROR                             \n";
+            text += " Prerequisites:                                                     \n";
+            text += " User ID has to be unique and consist of minimum 4 characters, max 30.\n";
+            text += " Only letters  and numbers and at least one of each, user ID is not \n";
+            text += " case sensitive, no empty spaces are allowed.                       \n";
+            text += "                                                                    \n";
+            text += " Password has to have a minimum of 4 characters and consist of at   \n";
+            text += " least one letter, one number and one special character. Passwords  \n";
+            text += " are case sensitive and need to consist of both upper and lower     \n";
+            text += " case letters. Maximum 16 characters.                               \n";
+            text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+            break;
+        case 2:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text += "                                 ERROR                              \n";
+            text += " User ID not in database, check your typing or                      \n";
+            text += " create new account.                                                \n";
+            text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            break;
+        case 3:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text += "                                 ERROR                              \n";
+            text += " Password not in database, check your typing, you have              \n";
+            text += " three attempts.                                                    \n";
+            text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            break;
+        case 4:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            text += "                                WARNING                             \n";
+            text += " You have tried to reach this userID three times with invalid       \n";
+            text += " password, this user vill be deleted. You may create new user.      \n";
+            text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+            break;
+        case 5:
+            text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&lt;br>";
+            text += " &lt;h3>Prerequisites:&lt;/h3>&lt;br>";
+            text += " User ID has to be unique and consist of minimum 4 characters, max 30.&lt;br>";
+            text += " Only letters  and numbers and at least one of each, user ID is not &lt;br>";
+            text += " case sensitive, no empty spaces are allowed.                       &lt;br>";
+            text += "                                                                    &lt;br>";
+            text += " Password has to have a minimum of 4 characters and consist of at   &lt;br>";
+            text += " least one letter, one number and one special character. Passwords  &lt;br>";
+            text += " are case sensitive and need to consist of both upper and lower     &lt;br>";
+            text += " case letters. Maximum 16 characters.                               &lt;br>";
+            text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&lt;br>";
+            break;
+        case 6:
+            text = "                                           HOW-TO\n";
+            text += " !!! You cannot login without first creating an account !!!\n";
+            text += " To create an account:\n";
+            text += " Click on \"Create Account\" \n";
+            text += " write User ID and Password according to prerequisites and click \"CREATE\"\n";
+            text += " Click on \"Go To Login\" and test your login, create a bunch of logins!\n";
+            text += "                                                                    \n";
+            text += " Create an Admin account to be able to perform CRUD operations:     \n";
+            text += " Create account with \"admin\" as User ID. Admin as User ID can be\n";
+            text += " changed with CRUD operations after login as admin on \"Admin page\"\n";
+            text += " Database is visual as JSON in browser dev tool as \"myLoginDB\" in \n";
+            text += " Local storage.";
+            break;
+    }
+    return text;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createdynamictablefordisplayofdatabase">create dynamic table fordisplay of database</a></li><li><a href="global.html#createAccountGUIsetupforcreatingaccount">createAccountGUI setup for creating account</a></li><li><a href="global.html#deleteallstoreddatainLocalstorage">delete all stored data in Local storage</a></li><li><a href="global.html#deleterowindatabaseidentifiedbyDataIDIfadmindeletesownentryandadminUserIDhasbeenchangeditwillalsodelete%2522newAdminID%2522inLocalstorage">delete row in database identified by Data IDIf admin deletes own entry and admin User ID has beenchanged it will also delete "newAdminID" in Local storage</a></li><li><a href="global.html#diplayalertwithhelptext">diplay alert with helptext</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getdatabasefromLocalstoragestorelocallyin%2522adminLocalDB%2522">get database from Local storagestore locally in "adminLocalDB"</a></li><li><a href="global.html#getUsersExperimentalfunctionforSelenium">getUsersExperimental function for Selenium</a></li><li><a href="global.html#goToLoginGUIsetupforlogin">goToLoginGUI setup for login</a></li><li><a href="global.html#helpDisplayhelpfile">helpDisplay help file</a></li><li><a href="global.html#LoginMainfunctionforloginorcreateaccountReadsobjectofUserclass">LoginMain function for login or create accountReads object of User class</a></li><li><a href="global.html#pageRedirectRedirectadminafterlogin">pageRedirectRedirect admin after login</a></li><li><a href="global.html#posttodatabase">post to database</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#redirecttoindexwhenlogout">redirect to index when logout</a></li><li><a href="global.html#resetSuccessCleansupGUIaftercreationorlogin">resetSuccessCleans up GUI after creation or login</a></li><li><a href="global.html#setUpAdminCheckifadminUserIDhasbeenchangedandloadintoadminID">setUpAdminCheck if admin User ID has been changed and load into adminID</a></li><li><a href="global.html#setUpDBCheckifDBavailableandloadintousers%255B%255D">setUpDBCheck if DB available and load into users[]</a></li><li><a href="global.html#updateseitherUserIDorPassword.UpdatedefaultadminUserIDtonewIDaccordingtoprerequisites">updates either User ID or Password.Update default admin User ID to new ID accordingto prerequisites</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 09:56:10 GMT+0100 (centraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
