@@ -100,5 +100,7 @@ class User{
         //Save users to local storage
         let myLoginDB = JSON.stringify(users);
         localStorage.setItem("myLoginDB", myLoginDB); //Stored in browser local storage "kolla i utvecklarverktyg"
-    }      
-}        
+    } 
+}
+//For jest tests
+module.exports = User;        
