@@ -1,9 +1,16 @@
 /**
-************************************** 
+**********************************************
 * Login program with JSON Database
-* Richard Fehling, MVT21 EC Utbildning
-************************************** 
+* @author Richard Fehling, MVT21 EC Utbildning
+**********************************************
 */
+
+/**
+ * @function promptText
+ * @description Textfiles for admins to be displayed as alert, prompted or help
+ * @param {integer} x - Integer to select text from switch case
+ * @returns string
+ */
 function promptText(x) {
     let text = "";
     switch (x) {

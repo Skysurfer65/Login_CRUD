@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: classUser.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: classUser.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 **********************************************
 * Login program with JSON Database
 * @author Richard Fehling, MVT21 EC Utbildning
@@ -32,26 +60,26 @@ class User{
      */
     validateUserID(adminID) {
         let letter = false, number = false;
-        let specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}";
+        let specialCharacters = " !#$%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}";
         let numbers = "1234567890";
         
         //Check if userID empty
         if (this.userID == null) return false;
         if (this.userID.isEmpty) return false;
         //Check length of userID
-        if (this.userID.length < 4 || this.userID.length > 30) return false;
+        if (this.userID.length &lt; 4 || this.userID.length > 30) return false;
         //No checks for admin. Will be checked later when updated in admin.js
         if (this.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){ 
             this.admin = "YES";
             return true;
         } else this.admin = "NO";
         //Check for no empty space or special char, at least one letter and one number
-        for (let i = 0; i < this.userID.length; i++) {
+        for (let i = 0; i &lt; this.userID.length; i++) {
             if (specialCharacters.indexOf(this.userID[i]) > -1) return false;
             else if (numbers.indexOf(this.userID[i]) > -1) number = true;
             else letter = true;         
         }
-        return (letter && number);
+        return (letter &amp;&amp; number);
     }
     /**
      * @method validatePassword
@@ -60,7 +88,7 @@ class User{
      */
     validatePassword(){
         let specialChar = false, number = false, letter = false, upperCase = false;
-        let specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}";
+        let specialCharacters = "!#$%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}";
         let emptySpace = " ";
         let numbers = "1234567890";
         let capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
@@ -69,17 +97,17 @@ class User{
         if (this.password == null) return false;
         if (this.password.isEmpty) return false;
         //Check length
-        if (this.password.length < 4 || this.password.length > 16) return false;
+        if (this.password.length &lt; 4 || this.password.length > 16) return false;
         
         //Check for no empty space but at least one letter, one number and one special character
-        for (let i = 0; i < this.password.length; i++) {
+        for (let i = 0; i &lt; this.password.length; i++) {
             if (emptySpace.indexOf(this.password[i]) > -1) return false;
             else if (specialCharacters.indexOf(this.password[i]) > -1) specialChar = true;
             else if (numbers.indexOf(this.password[i]) > -1) number = true;
             else if (capitalLetters.indexOf(this.password[i]) > -1) upperCase = true;
             else letter = true;
         }  
-        return (specialChar && number && upperCase && letter);
+        return (specialChar &amp;&amp; number &amp;&amp; upperCase &amp;&amp; letter);
     }
 
     /**
@@ -89,7 +117,7 @@ class User{
      * @returns boolean
      */
     checkUserInDB(users){
-        for (let i = 0; i < users.length; i++){
+        for (let i = 0; i &lt; users.length; i++){
             if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()) return true;
         }
         return false;
@@ -102,7 +130,7 @@ class User{
      * @returns boolean
      */
     checkPassword(users){
-        for (let i = 0; i < users.length; i++){
+        for (let i = 0; i &lt; users.length; i++){
             //Check password to correct userID, not case sensitive
             if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()){
                 //Password is case sensitive
@@ -136,4 +164,26 @@ class User{
     } 
 }
 //For jest tests, will generate warning in browser debug, could be commented out for normal use
-module.exports = User;        
+module.exports = User;        </code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUserToUsers">addUserToUsers</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserInDB">checkUserInDB</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEntry">deleteEntry</a></li><li><a href="global.html#deleteEverything">deleteEverything</a></li><li><a href="global.html#displayDB">displayDB</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#goToLogin">goToLogin</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#helpAdmin">helpAdmin</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#pageRedirect">pageRedirect</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#resetSuccess">resetSuccess</a></li><li><a href="global.html#retrievingData">retrievingData</a></li><li><a href="global.html#saveToDB">saveToDB</a></li><li><a href="global.html#setUpAdmin">setUpAdmin</a></li><li><a href="global.html#setUpDB">setUpDB</a></li><li><a href="global.html#updateEntry">updateEntry</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li><li><a href="global.html#validUserID">validUserID</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 02 2021 14:18:16 GMT+0100 (centraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

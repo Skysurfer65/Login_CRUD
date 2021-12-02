@@ -27,11 +27,18 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-************************************** 
+**********************************************
 * Login program with JSON Database
-* Richard Fehling, MVT21 EC Utbildning
-************************************** 
+* @author Richard Fehling, MVT21 EC Utbildning
+**********************************************
 */
+
+/**
+ * @function errors
+ * @description Textfiles to be displayed as alert, prerequisites or help
+ * @param {integer} x - number of text in switch case 
+ * @returns string
+ */
 function errors(x) {
     let text = "";
     switch (x) {
@@ -110,13 +117,13 @@ function errors(x) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createdynamictablefordisplayofdatabase">create dynamic table fordisplay of database</a></li><li><a href="global.html#createAccountGUIsetupforcreatingaccount">createAccountGUI setup for creating account</a></li><li><a href="global.html#deleteallstoreddatainLocalstorage">delete all stored data in Local storage</a></li><li><a href="global.html#deleterowindatabaseidentifiedbyDataIDIfadmindeletesownentryandadminUserIDhasbeenchangeditwillalsodelete%2522newAdminID%2522inLocalstorage">delete row in database identified by Data IDIf admin deletes own entry and admin User ID has beenchanged it will also delete "newAdminID" in Local storage</a></li><li><a href="global.html#diplayalertwithhelptext">diplay alert with helptext</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getdatabasefromLocalstoragestorelocallyin%2522adminLocalDB%2522">get database from Local storagestore locally in "adminLocalDB"</a></li><li><a href="global.html#getUsersExperimentalfunctionforSelenium">getUsersExperimental function for Selenium</a></li><li><a href="global.html#goToLoginGUIsetupforlogin">goToLoginGUI setup for login</a></li><li><a href="global.html#helpDisplayhelpfile">helpDisplay help file</a></li><li><a href="global.html#LoginMainfunctionforloginorcreateaccountReadsobjectofUserclass">LoginMain function for login or create accountReads object of User class</a></li><li><a href="global.html#pageRedirectRedirectadminafterlogin">pageRedirectRedirect admin after login</a></li><li><a href="global.html#posttodatabase">post to database</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#redirecttoindexwhenlogout">redirect to index when logout</a></li><li><a href="global.html#resetSuccessCleansupGUIaftercreationorlogin">resetSuccessCleans up GUI after creation or login</a></li><li><a href="global.html#setUpAdminCheckifadminUserIDhasbeenchangedandloadintoadminID">setUpAdminCheck if admin User ID has been changed and load into adminID</a></li><li><a href="global.html#setUpDBCheckifDBavailableandloadintousers%255B%255D">setUpDBCheck if DB available and load into users[]</a></li><li><a href="global.html#updateseitherUserIDorPassword.UpdatedefaultadminUserIDtonewIDaccordingtoprerequisites">updates either User ID or Password.Update default admin User ID to new ID accordingto prerequisites</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUserToUsers">addUserToUsers</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserInDB">checkUserInDB</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEntry">deleteEntry</a></li><li><a href="global.html#deleteEverything">deleteEverything</a></li><li><a href="global.html#displayDB">displayDB</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#goToLogin">goToLogin</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#helpAdmin">helpAdmin</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#pageRedirect">pageRedirect</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#resetSuccess">resetSuccess</a></li><li><a href="global.html#retrievingData">retrievingData</a></li><li><a href="global.html#saveToDB">saveToDB</a></li><li><a href="global.html#setUpAdmin">setUpAdmin</a></li><li><a href="global.html#setUpDB">setUpDB</a></li><li><a href="global.html#updateEntry">updateEntry</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li><li><a href="global.html#validUserID">validUserID</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 09:56:10 GMT+0100 (centraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 02 2021 14:18:16 GMT+0100 (centraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>

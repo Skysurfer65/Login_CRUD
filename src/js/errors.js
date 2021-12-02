@@ -1,9 +1,16 @@
 /**
-************************************** 
+**********************************************
 * Login program with JSON Database
-* Richard Fehling, MVT21 EC Utbildning
-************************************** 
+* @author Richard Fehling, MVT21 EC Utbildning
+**********************************************
 */
+
+/**
+ * @function errors
+ * @description Textfiles to be displayed as alert, prerequisites or help
+ * @param {integer} x - number of text in switch case 
+ * @returns string
+ */
 function errors(x) {
     let text = "";
     switch (x) {

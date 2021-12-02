@@ -44,7 +44,7 @@ setUpAdmin();
 
 /**
  * @function  setUpDB
- * Check if DB available and load into users[]
+ * @description Check if DB available and load into users[]
  */
 //Functions
 function setUpDB(){
@@ -56,7 +56,7 @@ function setUpDB(){
 
 /**
  * @function setUpAdmin
- * Check if admin User ID has been changed and load into adminID
+ * @description Check if admin User ID has been changed and load into adminID
  */
 function setUpAdmin(){
     if (localStorage.getItem("newAdminID") === null) {
@@ -68,8 +68,7 @@ function setUpAdmin(){
 
 /**
  * @function login
- * Main function for login or create account
- * Reads object of User class
+ * @description Main function for login or create account, reads object of User class.
  */
 function login() {
     //Make object of User        
@@ -99,7 +98,7 @@ function login() {
 
 /**
  * @function createAccount
- * GUI setup for creating account
+ * @description GUI setup for creating account
  */
 function createAccount(){
     accountCreation = true;
@@ -112,7 +111,7 @@ function createAccount(){
 
 /**
  * @function goToLogin
- * GUI setup for login
+ * @description GUI setup for login
  */
 function goToLogin(){
     accountCreation = false;
@@ -126,7 +125,7 @@ function goToLogin(){
 
 /**
  * @function help
- * Display help file
+ * @description Display help file
  */
 function help() {
    alert(errors(6)); 
@@ -134,7 +133,7 @@ function help() {
 
 /**
  * @function resetSuccess
- * Cleans up GUI after creation or login
+ * @description Cleans up GUI after creation or login
  */
 function resetSuccess(){
     output1.innerHTML = "";
@@ -143,7 +142,7 @@ function resetSuccess(){
 
 /**
  * @function pageRedirect
- * Redirect admin after login
+ * @description Redirect admin after login
  */
 function pageRedirect() {
     window.location.replace("admin.html");
@@ -151,7 +150,7 @@ function pageRedirect() {
 
 /**
  * @function getUsers
- * Experimental function for Selenium (måste köras med js executor)
+ * @description Experimental function for Selenium (måste köras med js executor)
  * @returns string presentation of objects in users
  */
 function getUsers(){

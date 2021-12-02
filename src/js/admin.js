@@ -33,8 +33,9 @@ helpAdminTxt.onclick = helpAdmin;
 
 //Functions
 /**
- * @function get database from Local storage
- * store locally in "adminLocalDB"
+ * @function retrievingData 
+ * @description Database from Local storage
+ * stored locally in "adminLocalDB"
  */
 function retrievingData(){
     let textDB = localStorage.getItem("myLoginDB");
@@ -42,8 +43,8 @@ function retrievingData(){
 }
 
 /**
- * @function create dynamic table for
- * display of database
+ * @function displayDB 
+ * @description Dynamic table for display of database
  */
 function displayDB(){
     //Variables
@@ -88,22 +89,24 @@ function displayDB(){
 }
 
 /**
- * @function diplay alert with helptext
+ * @function helpAdmin
+ * @description HTML alert with helptext
  */
 function helpAdmin(){
     alert(promptText(6));
 }
 
 /**
- * @function redirect to index when logout
+ * @function logout
+ * @description Back to index page when logout
  */
 function logout(){
     window.location.replace("index.html");
 }
 
 /**
- * Parse input string to integer
- * @description take prompt text as param
+ * @function promptIntInput
+ * @description Parse input string to integer, take prompt text as param.
  * @param {string} text - from promptText.js
  * @returns integer 
  */
@@ -113,6 +116,7 @@ function promptIntInput(text){
 }
 
 /**
+ * @function promptTxtInput
  * @description take prompt text as param
  * @param {string} text - from promptText.js
  * @returns string 
@@ -125,7 +129,8 @@ function promptTxtInput(text){
 }
 
 /**
- * @function updates either User ID or Password.
+ * @function updateEntry 
+ * @description Either User ID or Password.
  * Update default admin User ID to new ID according
  * to prerequisites
  */
@@ -175,7 +180,8 @@ function updateEntry(){
 }
 
 /**
- * @function delete row in database identified by Data ID
+ * @function deleteEntry
+ * @description Row in database identified by Data ID
  * If admin deletes own entry and admin User ID has been
  * changed it will also delete "newAdminID" in Local storage
  */
@@ -195,7 +201,8 @@ function deleteEntry(){
 }
 
 /**
- * @function delete all stored data in Local storage
+ * @function deleteEverything
+ * @description Delete all stored data in Local storage
  */
 function deleteEverything(){
     if (confirm("!!! Are you shure to delete the whole list !!!")) {
@@ -207,7 +214,8 @@ function deleteEverything(){
 }
 
 /**
- * @function post to database
+ * @function saveToDB
+ * @description Stringify array and save to database
  * @param {array} adminLocalDB - Objects of User
  */
 function saveToDB(adminLocalDB){
@@ -216,6 +224,7 @@ function saveToDB(adminLocalDB){
 }
 
 /**
+ * @function validateUserID
  * @description Check updated User ID according to prerequisites
  * @param {string} newUserID - spaces removed
  * @returns true || false
@@ -246,6 +255,7 @@ function validateUserID(newUserID){
 }
 
 /**
+ * @function validatePassword
  * @description Check updated Password according to prerequisites
  * @param {string} newPassword - spaces removed
  * @returns true || false
