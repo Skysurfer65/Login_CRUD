@@ -67,7 +67,7 @@ function setUpAdmin(){
 }
 
 /**
- * @function Login
+ * @function login
  * Main function for login or create account
  * Reads object of User class
  */
@@ -76,16 +76,16 @@ function login() {
     let user = new User(form.userID.value.trim(), form.password.value.trim());
 
     if (accountCreation){
-        if (!user.checkUserInDB() && user.validateUserID() && user.validatePassword()){
+        if (!user.checkUserInDB(users) && user.validateUserID(adminID) && user.validatePassword()){
             //Add to user ArrayList
             user.addUserToUsers();
             output1.innerHTML = "Login credentials<br>succesfully created!";
         } else alert(errors(1));
 
     } else {
-        if (user.checkUserInDB()){
+        if (user.checkUserInDB(users)){
             //Check password
-            if (user.checkPassword()){
+            if (user.checkPassword(users)){
                 //If you're admin
                 if (user.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){
                     pageRedirect();
@@ -151,7 +151,7 @@ function pageRedirect() {
 
 /**
  * @function getUsers
- * Experimental function for Selenium
+ * Experimental function for Selenium (måste köras med js executor)
  * @returns string presentation of objects in users
  */
 function getUsers(){

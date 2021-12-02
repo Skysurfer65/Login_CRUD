@@ -16,7 +16,7 @@ class User{
         }
 
     //Class Methods
-    validateUserID() {
+    validateUserID(adminID) {
         let letter = false, number = false;
         let specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}";
         let numbers = "1234567890";
@@ -64,7 +64,7 @@ class User{
         return (specialChar && number && upperCase && letter);
     }
 
-    checkUserInDB(){
+    checkUserInDB(users){
         for (let i = 0; i < users.length; i++){
             //UserID not case sensitive
             if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()) return true;
@@ -72,10 +72,10 @@ class User{
         return false;
     }
 
-    checkPassword(){
+    checkPassword(users){
         for (let i = 0; i < users.length; i++){
             //Check password to correct userID, not case sensitive
-            if (users[i].userID.toLocaleUpperCase() === this.userID.toLocaleUpperCase()){
+            if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()){
                 //Password is case sensitive
                 if (users[i].password === this.password) return true;
                 //If not correct pass set nrOfAttempts and check
@@ -102,5 +102,5 @@ class User{
         localStorage.setItem("myLoginDB", myLoginDB); //Stored in browser local storage "kolla i utvecklarverktyg"
     } 
 }
-//For jest tests
+//For jest tests, will generate warning in browser debug, could be commented out for normal use
 module.exports = User;        
