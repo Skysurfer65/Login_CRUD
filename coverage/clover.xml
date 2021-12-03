@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638526405972" clover="3.2.0">
-  <project timestamp="1638526405972" name="All files">
+<coverage generated="1638529308925" clover="3.2.0">
+  <project timestamp="1638529308925" name="All files">
     <metrics statements="46" coveredstatements="43" conditionals="44" coveredconditionals="44" methods="6" coveredmethods="5" elements="96" coveredelements="92" complexity="0" loc="46" ncloc="46" packages="1" files="1" classes="1"/>
     <file name="classUser.js" path="C:\Users\Bax Musik\Desktop\Coders\alg_övningar\Login_CRUD\src\js\classUser.js">
       <metrics statements="46" coveredstatements="43" conditionals="44" coveredconditionals="44" methods="6" coveredmethods="5"/>
@@ -45,11 +45,11 @@
       <line num="113" count="3" type="stmt"/>
       <line num="114" count="3" type="cond" truecount="2" falsecount="0"/>
       <line num="116" count="1" type="stmt"/>
-      <line num="126" count="3" type="stmt"/>
-      <line num="134" count="0" type="stmt"/>
-      <line num="136" count="0" type="stmt"/>
-      <line num="137" count="0" type="stmt"/>
-      <line num="141" count="1" type="stmt"/>
+      <line num="121" count="3" type="stmt"/>
+      <line num="129" count="0" type="stmt"/>
+      <line num="131" count="0" type="stmt"/>
+      <line num="132" count="0" type="stmt"/>
+      <line num="136" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
