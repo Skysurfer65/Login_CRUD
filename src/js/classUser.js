@@ -36,8 +36,9 @@ class User{
         let numbers = "1234567890";
         
         //Check if userID empty
-        if (this.userID == null) return false;
-        if (this.userID.isEmpty) return false;
+        if (this.userID == null || this.userID.isEmpty) return false;
+        //if (this.userID == null) return false;
+        
         //Check length of userID
         if (this.userID.length < 4 || this.userID.length > 30) return false;
         //No checks for admin. Will be checked later when updated in admin.js
@@ -66,8 +67,8 @@ class User{
         let capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
             
         //Check if password is empty
-        if (this.password == null) return false;
-        if (this.password.isEmpty) return false;
+        if (this.password == null || this.password.isEmpty) return false;
+        //if (this.password.isEmpty) return false;
         //Check length
         if (this.password.length < 4 || this.password.length > 16) return false;
         
@@ -107,17 +108,18 @@ class User{
             if (users[i].userID.toLocaleLowerCase() === this.userID.toLocaleLowerCase()){
                 //Password is case sensitive
                 if (users[i].password === this.password) return true;
-                //If not correct pass set nrOfAttempts and check
+                //If not correct pass set nrOfAttempts
                 else {
                     users[i].nrOfAttempts += 1;
                     if (users[i].nrOfAttempts == 3){
                         //Delete user from user array
                         users.splice(i, 1);
-                        //Update database
-                        let myLoginDB = JSON.stringify(users);
-                        localStorage.setItem("myLoginDB", myLoginDB); 
-                        alert(errors(4));
-                    } else alert(errors(3));
+                //         //Update database
+                //         let myLoginDB = JSON.stringify(users);
+                //         localStorage.setItem("myLoginDB", myLoginDB); 
+                //         alert(errors(4));
+                    //} //else alert(errors(3));
+                    }
                 }
             }
         }

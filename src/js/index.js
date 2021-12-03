@@ -91,7 +91,31 @@ function login() {
                 }
                 output1.innerHTML = "CORRECT<br>You're logged in";
                 output2.innerHTML = "Reset to remove this message";
-            } 
+            } else {
+                let deletedFromDB = true;
+                for (let i = 0; i < users.length; i++){
+                    if (users[i].userID.toLocaleLowerCase() === user.userID.toLocaleLowerCase()){
+                        deletedFromDB = false;
+                        alert(errors(3));
+                    }
+                }
+                if (deletedFromDB){
+                    //Update database   
+                    let myLoginDB = JSON.stringify(users);
+                    localStorage.setItem("myLoginDB", myLoginDB);
+                    alert(errors(4));                      
+                }
+                // users.forEach(userObject => {
+                //     if (userObject.userID.toLocaleLowerCase() === user.userID.toLocaleLowerCase()){
+                //         alert(errors(3));
+                //     } else {  
+                //         //Update database
+                //         let myLoginDB = JSON.stringify(users);
+                //         localStorage.setItem("myLoginDB", myLoginDB);
+                //         alert(errors(4));                       
+                //     }                           
+                // });        
+            }
         } else alert(errors(2));                
     }
 }

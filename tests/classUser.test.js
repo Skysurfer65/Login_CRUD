@@ -72,12 +72,19 @@ describe('Checking checkUserInDB() in class User', () => {
   test.each(users)('Check user ID (%s) in mockDB', (userID) => {
     expect(userID.checkUserInDB(users)).toBeTruthy(); 
   });
+  
+  test.each(users)('Check user ID "baluba5" not in mockDB', () => {
+    let baluba5ID = new User("baluba5", null, null);
+    expect(baluba5ID.checkUserInDB(users)).toBeFalsy(); 
+  });
+
 });
 
 describe('Checking checkPassword() in class User', () => {
   //Setup test arrays
   const goodUsers = ["bax1", "Bax2", "admin", "Admin1", "Åäö20", "longUserID01234567890123456789"]; 
   const goodPasswords = ["Bax1#", "2aX#", "Bax3%", "40bAx?", "20Åäö&", "LongPass##012345"];
+  const badPasswords = [" Password1#", "Pass word1#", "TooLongPass#34567"];
   const users = [];
 
   //Make a mock database
@@ -90,7 +97,22 @@ describe('Checking checkPassword() in class User', () => {
   };
 
   test.each(users)('Check password (%s) in mockDB', (password) => {
-    expect(password.checkPassword(users)).toBeTruthy(); 
+    expect(password.checkPassword(users)).toBeTruthy();
   });
+
+  //Setup bad person with correct pass in mock database
+  let badPerson = new User("bax1", "Baxen1#", null);
+  let badPersUsers = [badPerson];
+
+  //Do 3 bad logins with wrong pass
+  test.each(badPasswords)('Check bad password (%s) against mockDB', (password) => {
+    let badTry = new User("bax1", password, null);
+    expect(badTry.checkPassword(badPersUsers)).toBeFalsy(); 
+  });
+
+  test('Empty array after 3 bad pass', () => {
+    expect(badPersUsers.length).toBe(0);
+  });
+
 });
 
