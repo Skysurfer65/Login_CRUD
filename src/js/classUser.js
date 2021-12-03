@@ -114,11 +114,6 @@ class User{
                     if (users[i].nrOfAttempts == 3){
                         //Delete user from user array
                         users.splice(i, 1);
-                //         //Update database
-                //         let myLoginDB = JSON.stringify(users);
-                //         localStorage.setItem("myLoginDB", myLoginDB); 
-                //         alert(errors(4));
-                    //} //else alert(errors(3));
                     }
                 }
             }

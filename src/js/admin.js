@@ -5,7 +5,7 @@
 * @file store DB in Local storage
 **********************************************
 */
-//Database administation
+
 //Page variables
 let adminLocalDB = [];
 
@@ -47,7 +47,6 @@ function retrievingData(){
  * @description Dynamic table for display of database
  */
 function displayDB(){
-    //Variables
     let counter = 0;
     let myTable = document.getElementById("tableDB");
 
