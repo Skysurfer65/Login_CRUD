@@ -25,7 +25,7 @@ class User{
 
     //Class Methods
     /**
-     * @method validUserID
+     * @method valideUserID-UserClassMethod
      * @description Check to prerequisites
      * @param {string} adminID - Default or updated
      * @returns boolean
@@ -55,7 +55,7 @@ class User{
         return (letter && number);
     }
     /**
-     * @method validatePassword
+     * @method validatePassword-UserClassMethod
      * @description Check to prerequisites
      * @returns boolean
      */
@@ -84,7 +84,7 @@ class User{
     }
 
     /**
-     * @method checkUserInDB
+     * @method checkUserInDB-UserClassMethod
      * @description User ID not case sensitive
      * @param {array} users - Array of User objects
      * @returns boolean
@@ -97,7 +97,7 @@ class User{
     }
 
     /**
-     * @method checkPassword
+     * @method checkPassword-UserClassMethod
      * @description Also includes delete user if nrOfAttempts == 3
      * @param {array} users - array of User objects
      * @returns boolean
@@ -122,7 +122,7 @@ class User{
     }
 
     /**
-     * @method addUserToUsers
+     * @method addUserToUsers-UserClassMethod
      * @description Add user object to array users then stringify and save as DB in Local storage
      */
     addUserToUsers(){

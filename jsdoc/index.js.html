@@ -111,15 +111,39 @@ function login() {
 
     } else {
         if (user.checkUserInDB(users)){
+            //If you're admin
+            let thisIsAdmin = false;
+            if (user.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){
+                thisIsAdmin = true;
+            }           
             //Check password
             if (user.checkPassword(users)){
-                //If you're admin
-                if (user.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){
+                //Redirect to Admin page
+                if (thisIsAdmin){
                     pageRedirect();
                 }
                 output1.innerHTML = "CORRECT&lt;br>You're logged in";
                 output2.innerHTML = "Reset to remove this message";
-            } 
+            } else {
+                let outOfAttempts = true;
+                users.forEach(userObject => {
+                    if (userObject.userID.toLocaleLowerCase() === user.userID.toLocaleLowerCase()){
+                        outOfAttempts = false;
+                        alert(errors(3));
+                    }             
+                });       
+                if (outOfAttempts){
+                    //Update database  
+                    let myLoginDB = JSON.stringify(users);
+                    localStorage.setItem("myLoginDB", myLoginDB);
+                    //If admin with own User ID
+                    if (thisIsAdmin){
+                        localStorage.removeItem("newAdminID");
+                        setUpAdmin(); 
+                    }
+                    alert(errors(4));                      
+                }      
+            }
         } else alert(errors(2));                
     }
 }
@@ -195,13 +219,13 @@ function getUsers(){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUserToUsers">addUserToUsers</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserInDB">checkUserInDB</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEntry">deleteEntry</a></li><li><a href="global.html#deleteEverything">deleteEverything</a></li><li><a href="global.html#displayDB">displayDB</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#goToLogin">goToLogin</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#helpAdmin">helpAdmin</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#pageRedirect">pageRedirect</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#resetSuccess">resetSuccess</a></li><li><a href="global.html#retrievingData">retrievingData</a></li><li><a href="global.html#saveToDB">saveToDB</a></li><li><a href="global.html#setUpAdmin">setUpAdmin</a></li><li><a href="global.html#setUpDB">setUpDB</a></li><li><a href="global.html#updateEntry">updateEntry</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validateUserID">validateUserID</a></li><li><a href="global.html#validUserID">validUserID</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUserToUsers-UserClassMethod">addUserToUsers-UserClassMethod</a></li><li><a href="global.html#checkPassword-UserClassMethod">checkPassword-UserClassMethod</a></li><li><a href="global.html#checkUserInDB-UserClassMethod">checkUserInDB-UserClassMethod</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#deleteEntry">deleteEntry</a></li><li><a href="global.html#deleteEverything">deleteEverything</a></li><li><a href="global.html#displayDB">displayDB</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#goToLogin">goToLogin</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#helpAdmin">helpAdmin</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#pageRedirect">pageRedirect</a></li><li><a href="global.html#promptIntInput">promptIntInput</a></li><li><a href="global.html#promptText">promptText</a></li><li><a href="global.html#promptTxtInput">promptTxtInput</a></li><li><a href="global.html#resetSuccess">resetSuccess</a></li><li><a href="global.html#retrievingData">retrievingData</a></li><li><a href="global.html#saveToDB">saveToDB</a></li><li><a href="global.html#setUpAdmin">setUpAdmin</a></li><li><a href="global.html#setUpDB">setUpDB</a></li><li><a href="global.html#updateEntry">updateEntry</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#validatePassword-UserClassMethod">validatePassword-UserClassMethod</a></li><li><a href="global.html#validateUserID">validateUserID</a></li><li><a href="global.html#valideUserID-UserClassMethod">valideUserID-UserClassMethod</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 02 2021 14:18:16 GMT+0100 (centraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 03 2021 16:07:39 GMT+0100 (centraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>
