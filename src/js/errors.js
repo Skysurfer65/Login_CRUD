@@ -46,7 +46,7 @@ function errors(x) {
             text = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
             text += "                                WARNING                             \n";
             text += " You have tried to reach this userID three times with invalid       \n";
-            text += " password, this user vill be deleted. You may create new user.      \n";
+            text += " password, this user Will be deleted. You may create new user.      \n";
             text += "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
             break;
         case 5:
