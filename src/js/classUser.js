@@ -5,7 +5,6 @@
 * @file store DB in Local storage
 **********************************************
 */
-//User class
 class User{
     /**
      * @description Create user from class User.
@@ -23,7 +22,6 @@ class User{
         this.nrOfAttempts = 0;          
         }
 
-    //Class Methods
     /**
      * @method valideUserID-UserClassMethod
      * @description Check to prerequisites
@@ -37,15 +35,16 @@ class User{
         
         //Check if userID empty
         if (this.userID == null || this.userID.isEmpty) return false;
-        //if (this.userID == null) return false;
         
         //Check length of userID
         if (this.userID.length < 4 || this.userID.length > 30) return false;
+
         //No checks for admin. Will be checked later when updated in admin.js
         if (this.userID.toLocaleLowerCase() === adminID.toLocaleLowerCase()){ 
             this.admin = "YES";
             return true;
         } else this.admin = "NO";
+
         //Check for no empty space or special char, at least one letter and one number
         for (let i = 0; i < this.userID.length; i++) {
             if (specialCharacters.indexOf(this.userID[i]) > -1) return false;
@@ -68,7 +67,7 @@ class User{
             
         //Check if password is empty
         if (this.password == null || this.password.isEmpty) return false;
-        //if (this.password.isEmpty) return false;
+    
         //Check length
         if (this.password.length < 4 || this.password.length > 16) return false;
         

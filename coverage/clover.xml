@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638780648494" clover="3.2.0">
-  <project timestamp="1638780648494" name="All files">
+<coverage generated="1638793834046" clover="3.2.0">
+  <project timestamp="1638793834046" name="All files">
     <metrics statements="46" coveredstatements="43" conditionals="44" coveredconditionals="44" methods="6" coveredmethods="5" elements="96" coveredelements="92" complexity="0" loc="46" ncloc="46" packages="1" files="1" classes="1"/>
     <file name="classUser.js" path="C:\Users\Bax Musik\Desktop\Coders\alg_övningar\Login_CRUD\src\js\classUser.js">
       <metrics statements="46" coveredstatements="43" conditionals="44" coveredconditionals="44" methods="6" coveredmethods="5"/>
@@ -13,15 +13,15 @@
       <line num="36" count="16" type="stmt"/>
       <line num="39" count="16" type="cond" truecount="4" falsecount="0"/>
       <line num="43" count="15" type="cond" truecount="4" falsecount="0"/>
-      <line num="45" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="12" type="cond" truecount="2" falsecount="0"/>
       <line num="46" count="4" type="stmt"/>
       <line num="47" count="4" type="stmt"/>
-      <line num="48" count="7" type="stmt"/>
-      <line num="50" count="7" type="stmt"/>
-      <line num="51" count="57" type="cond" truecount="2" falsecount="0"/>
-      <line num="52" count="54" type="cond" truecount="2" falsecount="0"/>
-      <line num="53" count="30" type="stmt"/>
-      <line num="55" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="8" type="stmt"/>
+      <line num="50" count="8" type="stmt"/>
+      <line num="51" count="61" type="cond" truecount="2" falsecount="0"/>
+      <line num="52" count="58" type="cond" truecount="2" falsecount="0"/>
+      <line num="53" count="33" type="stmt"/>
+      <line num="55" count="5" type="cond" truecount="2" falsecount="0"/>
       <line num="63" count="14" type="stmt"/>
       <line num="64" count="14" type="stmt"/>
       <line num="65" count="14" type="stmt"/>
