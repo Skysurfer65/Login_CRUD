@@ -13,20 +13,20 @@ let adminID = "";
 let accountCreation = false;
 
 //DOM variables
-let helpTxt = document.getElementById("help");
-let createOrLogin = document.getElementById("createOrLogin");
-let reset = document.getElementById("reset");
-let actionButton = document.getElementById("actionButton");
-let header = document.getElementById("header");
-let form = document.getElementById("login");
+const helpTxt = document.getElementById("help");
+const createOrLogin = document.getElementById("createOrLogin");
+const reset = document.getElementById("reset");
+const actionButton = document.getElementById("actionButton");
+const header = document.getElementById("header");
+const form = document.getElementById("login");
 
 //Clear text
-let clearTextID = document.getElementById("userID");
-let clearTextPass = document.getElementById("password");
+const clearTextID = document.getElementById("userID");
+const clearTextPass = document.getElementById("password");
 
 //Outputs text
-let output1 = document.getElementById("output1");
-let output2 = document.getElementById("output2");
+const output1 = document.getElementById("output1");
+const output2 = document.getElementById("output2");
 
 //Button functions
 helpTxt.onclick = help;

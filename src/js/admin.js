@@ -10,15 +10,15 @@
 let adminLocalDB = [];
 
 //DOM objects
-let dispDB = document.getElementById("displayDB");
-let logOut = document.getElementById("logout");
-let updEntry = document.getElementById("updateEntry");
-let delEntry = document.getElementById("deleteEntry");
-let delEverything = document.getElementById("deleteEverything");
-let helpAdminTxt = document.getElementById("helpAdmin");
+const dispDB = document.getElementById("displayDB");
+const logOut = document.getElementById("logout");
+const updEntry = document.getElementById("updateEntry");
+const delEntry = document.getElementById("deleteEntry");
+const delEverything = document.getElementById("deleteEverything");
+const helpAdminTxt = document.getElementById("helpAdmin");
 
 //For test
-let testOutput = document.getElementById("testOutput");
+const testOutput = document.getElementById("testOutput");
 
 //Get data from database
 retrievingData();
@@ -159,8 +159,9 @@ function updateEntry(){
 
         //Update password, truncate input enough to write "pass"
         else if (inputTxt.toLowerCase().substring(0, 4) === "pass"){
+            let newPassword;
             do {
-                var newPassword = promptTxtInput(5); //"var" selected to reach outside block
+                newPassword = promptTxtInput(5);
                 //TODO använda class User metoder istället 
                 valid = validatePassword(newPassword);
                 if (!valid) alert("!!! NOT A VALID SELECTION !!!");              
