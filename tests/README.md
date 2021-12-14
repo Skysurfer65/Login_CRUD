@@ -6,8 +6,8 @@ Testing classUser functions:
 - checkPassword()
 
 # To run
-In console write: **npm run testcov**
-Of course all node modules for jest has to be installed first.
+In console write: **npm run testcov**<br/>
+Of course, all node modules for jest has to be installed first.
 
 # Author
 Richard Fehling, student at EC Utbildning, MVT21<br/>
