@@ -110,7 +110,7 @@ function logout(){
  * @returns integer 
  */
 function promptIntInput(text){
-    let input = parseInt(prompt(promptText(text)));
+    let input = parseInt(prompt(promptText(text)), 10);
     return input;
 }
 
@@ -186,7 +186,7 @@ function updateEntry(){
  * changed it will also delete "newAdminID" in Local storage
  */
 function deleteEntry(){
-    let n = parseInt(prompt(promptText(2)));
+    let n = promptIntInput(2);
     if (n >= 0 && n < adminLocalDB.length){
         //If admin wants to delete his/her entry
         if (adminLocalDB[n].userID === "admin" || adminLocalDB[n].userID === localStorage.getItem("newAdminID")){
