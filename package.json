@@ -4,7 +4,8 @@
   "description": "Richard Fehling, student at EC Utbildning, MVT21<br/>\r richard.fehling@learnet.se",
   "main": "./tests/classUser.test.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "testcov": "jest --coverage"
   },
   "keywords": [],
   "author": "",

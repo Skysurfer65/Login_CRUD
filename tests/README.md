@@ -5,10 +5,9 @@ Testing classUser functions:
 - checkUserInDB()
 - checkPassword()
 
-# TODO's
-Jest was installed in tests folder which doesn't generate html
-printout for coverage. This is because tested files are in different folder.
-Reinstall to put package.json file in top folder.
+# To run
+In console write: **npm run testcov**
+Of course all node modules for jest has to be installed first.
 
 # Author
 Richard Fehling, student at EC Utbildning, MVT21<br/>
