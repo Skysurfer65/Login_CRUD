@@ -235,8 +235,9 @@ function validateUserID(newUserID){
     let numbers = "1234567890";
     
     //Check if userID empty
-    if (newUserID == null) return false;
-    if (newUserID.isEmpty) return false;
+    if(!newUserID) return false;
+    // if (newUserID == null) return false;
+    // if (newUserID.isEmpty) return false;
     //Check length
     if (newUserID.length < 4 || newUserID.length > 30) return false;
     //Check if userID already exists
@@ -268,8 +269,9 @@ function validatePassword(newPassword){
     let capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
         
     //Check if password is empty
-    if (newPassword == null) return false;
-    if (newPassword.isEmpty) return false;
+    if(!newPassword) return false;
+    // if (newPassword == null) return false;
+    // if (newPassword.isEmpty) return false;
     //Check length
     if (newPassword.length < 4 || newPassword.length > 16) return false;
     

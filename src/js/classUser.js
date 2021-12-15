@@ -34,7 +34,8 @@ class User{
         let numbers = "1234567890";
         
         //Check if userID empty
-        if (this.userID == null || this.userID.isEmpty) return false;
+        if(!this.userID) return false;
+        //if (this.userID == null || this.userID.isEmpty) return false;
         
         //Check length of userID
         if (this.userID.length < 4 || this.userID.length > 30) return false;
@@ -66,7 +67,8 @@ class User{
         let capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
             
         //Check if password is empty
-        if (this.password == null || this.password.isEmpty) return false;
+        if(!this.password) return false;
+        //if (this.password == null || this.password.isEmpty) return false;
     
         //Check length
         if (this.password.length < 4 || this.password.length > 16) return false;
