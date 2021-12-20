@@ -13,7 +13,7 @@ const User = require("../src/js/classUser.js");
 describe('Checking validateUserID() in class User', () => {
   //Setup test arrays
   const goodUsers = ["bax1", "Bax2", "admin", "Admin", "Åäö20", "longUserID01234567890123456789"];
-  const badUsers = ["", null, "axl", "richard", "adam1@", " baxen1#", "pat rik", "tooLongID0123456789012345678901"];
+  const badUsers = ["", null, undefined, "axl", "richard", "adam1@", "pat rik", "tooLongID0123456789012345678901"];
   //Variables
   let adminID;   
   
@@ -45,7 +45,7 @@ describe('Checking validateUserID() in class User', () => {
 describe('Checking validatePassword() in class User', () => {
   //Setup test arrays  
   const goodPasswords = ["Bax1#", "2aX#", "Bax3%", "40bAx?", "20Åäö&", "LongPass##012345"];
-  const badPasswords = ["", null, "P1#", "password1#", "Pass#", " Password1#", "Pass word1#", "TooLongPass#34567"];
+  const badPasswords = ["", null, undefined, "P1#", "password1#", "Pass#", "Pass word1#", "TooLongPass#34567"];
 
   test.each(goodPasswords)('tested password (%s)', (password) => {
     let user = new User(null, password, null);
